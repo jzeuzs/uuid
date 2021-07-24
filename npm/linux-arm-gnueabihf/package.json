@@ -1,0 +1,19 @@
+{
+	"name": "@tomiocodes/uuid-linux-arm-gnueabihf",
+	"version": "1.0.0",
+	"os": [
+		"linux"
+	],
+	"cpu": [
+		"arm"
+	],
+	"main": "uuid.linux-arm-gnueabihf.node",
+	"files": [
+		"uuid.linux-arm-gnueabihf.node"
+	],
+	"license": "Apache-2.0",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": "https://github.com/1chiSensei/uuid"
+}

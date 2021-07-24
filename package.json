@@ -1,0 +1,123 @@
+{
+	"name": "@tomiocodes/uuid",
+	"version": "1.0.0",
+	"description": "A simple utility to generate Universally Unique Identifiers.",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		"import": "./dist/index.mjs",
+		"require": "./dist/index.js"
+	},
+	"scripts": {
+		"test": "jest",
+		"bench": "SWC_NODE_PROJECT=./tsconfig.benchmark.json node -r @swc-node/register",
+		"ts:build": "tsup --dts --format esm,cjs",
+		"prettier": "prettier . --write",
+		"build": "run-p ts:build rs:build",
+		"rs:build": "napi build --platform --release",
+		"version": "napi version",
+		"artifacts": "napi artifacts",
+		"docs": "typedoc",
+		"fmt": "cargo fmt",
+		"format": "run-p prettier fmt",
+		"prepare": "node scripts/prepare.mjs"
+	},
+	"bin": {
+		"uuid-cli": "./dist/cli.js"
+	},
+	"keywords": [
+		"uuid",
+		"rust"
+	],
+	"napi": {
+		"name": "uuid",
+		"triples": {
+			"defaults": true,
+			"additional": [
+				"armv7-unknown-linux-gnueabihf",
+				"x86_64-unknown-linux-musl",
+				"aarch64-unknown-linux-gnu",
+				"aarch64-unknown-linux-musl",
+				"aarch64-apple-darwin",
+				"aarch64-linux-android"
+			]
+		}
+	},
+	"files": [
+		"lib",
+		"dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/1chiSensei/uuid.git"
+	},
+	"bugs": {
+		"url": "https://github.com/1chiSensei/uuid/issues"
+	},
+	"author": "Yoshida Tomio <https://tomio.codes>",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"@node-rs/helper": "^1.2.0",
+		"caporal": "^1.4.0",
+		"consola": "^2.15.3"
+	},
+	"devDependencies": {
+		"@napi-rs/cli": "^1.1.0",
+		"@sapphire/eslint-config": "^3.2.3",
+		"@sapphire/prettier-config": "^1.1.6",
+		"@sapphire/ts-config": "^3.0.0",
+		"@swc-node/jest": "^1.3.1",
+		"@swc-node/register": "^1.3.2",
+		"@types/eslint": "^7",
+		"@types/jest": "^26.0.24",
+		"@types/node": "^16.4.0",
+		"@types/prettier": "^2",
+		"@types/uuid": "^8",
+		"benny": "^3.6.15",
+		"eslint": "^7.31.0",
+		"husky": "^7.0.0",
+		"jest": "^27.0.6",
+		"lint-staged": "^11.1.1",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.3.2",
+		"tsup": "^4.12.5",
+		"typedoc": "^0.21.4",
+		"typedoc-plugin-nojekyll": "^1.0.1",
+		"typescript": "^4.3.5",
+		"uuid": "^8.3.2"
+	},
+	"eslintConfig": {
+		"extends": "@sapphire/eslint-config",
+		"env": {
+			"jest": true
+		}
+	},
+	"prettier": "@sapphire/prettier-config",
+	"jest": {
+		"testMatch": [
+			"<rootDir>/tests/**/*.test.ts"
+		],
+		"transform": {
+			"^.+\\.ts$": "@swc-node/jest"
+		},
+		"testEnvironment": "node"
+	},
+	"tsup": {
+		"splitting": false,
+		"sourcemap": true,
+		"clean": true,
+		"minify": true,
+		"entryPoints": [
+			"src/index.ts",
+			"src/cli.ts"
+		]
+	},
+	"lint-staged": {
+		"*.@(js|ts|mjs|yml|md|json)": "prettier . --write",
+		"*.rs": "yarn fmt"
+	}
+}

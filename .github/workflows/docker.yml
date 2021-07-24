@@ -1,0 +1,29 @@
+name: Docker
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+
+jobs:
+  build_image:
+    name: Build debian-builder:stretch
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: 1chisensei
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build docker image
+        run: |
+          docker build . --pull --no-cache -t ghcr.io/1chisensei/uuid/debian-builder:stretch
+          docker build . --pull --no-cache -f musl.Dockerfile -t ghcr.io/1chisensei/uuid/musl-builder:lts
+      - name: Push docker image
+        run: |
+          docker push ghcr.io/1chisensei/uuid/debian-builder:stretch
+          docker push ghcr.io/1chisensei/uuid/musl-builder:lts

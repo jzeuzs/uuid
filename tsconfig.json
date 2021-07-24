@@ -1,0 +1,9 @@
+{
+	"extends": "@sapphire/ts-config",
+	"compilerOptions": {
+		"outDir": "dist",
+		"rootDir": "src",
+		"incremental": false
+	},
+	"exclude": ["**/*.test.ts", "dist/**/*", "benchmark/**/*"]
+}

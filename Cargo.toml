@@ -1,0 +1,29 @@
+[package]
+name = "tomiocodes-uuid"
+version = "1.0.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+path = "lib/lib.rs"
+
+[dependencies]
+napi = "1"
+napi-derive = "1"
+uuid = { version = "0.8", features = ["serde", "v3", "v5", "v1"] }
+rs-uuid = "0.3.1"
+blob-uuid = "0.4.0"
+
+[target.'cfg(all(unix, not(target_env = "musl"), not(target_arch = "aarch64"), not(target_arch= "arm")))'.dependencies]
+jemallocator = { version = "0.3", features = ["disable_initial_exec_tls"] }
+
+[target.'cfg(all(windows, target_arch = "x86_64"))'.dependencies]
+mimalloc = { version = "0.1" }
+
+[build-dependencies]
+napi-build = "1"
+
+[profile.release]
+lto = true

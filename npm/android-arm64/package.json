@@ -1,0 +1,19 @@
+{
+	"name": "@tomiocodes/uuid-android-arm64",
+	"version": "1.0.0",
+	"os": [
+		"android"
+	],
+	"cpu": [
+		"arm64"
+	],
+	"main": "uuid.android-arm64.node",
+	"files": [
+		"uuid.android-arm64.node"
+	],
+	"license": "Apache-2.0",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": "https://github.com/1chiSensei/uuid"
+}

@@ -1,0 +1,19 @@
+{
+	"name": "@tomiocodes/uuid-win32-x64-msvc",
+	"version": "1.0.0",
+	"os": [
+		"win32"
+	],
+	"cpu": [
+		"x64"
+	],
+	"main": "uuid.win32-x64-msvc.node",
+	"files": [
+		"uuid.win32-x64-msvc.node"
+	],
+	"license": "Apache-2.0",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": "https://github.com/1chiSensei/uuid"
+}
