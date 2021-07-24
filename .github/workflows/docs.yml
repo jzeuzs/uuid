@@ -19,7 +19,7 @@ jobs:
           node-version: 16
 
       - name: Install Deps
-        run: yarn --immutable
+        run: yarn
 
       - name: Build Docs
         run: yarn docs
