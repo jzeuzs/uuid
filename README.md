@@ -111,4 +111,4 @@ echo "source <(uuid-cli completion fish)" >> ~/.config/fish/config.fish && sourc
 
 ## API Documentation
 
-For the full API documentation please refer to the TypeDoc generated [documentation](https://1chisensei.github.io/uuid).
+For the full API documentation please refer to the TypeDoc generated [documentation](https://uuid-ivory.vercel.app/).

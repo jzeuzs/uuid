@@ -2,6 +2,7 @@
 	"name": "@tomiocodes/uuid",
 	"version": "1.0.1",
 	"description": "A simple utility to generate Universally Unique Identifiers.",
+	"homepage": "https://uuid-ivory.vercel.app/",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
