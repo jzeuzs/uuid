@@ -1,0 +1,27 @@
+FROM node:alpine
+
+ENV PATH="/aarch64-linux-musl-cross/bin:/usr/local/cargo/bin/rustup:/root/.cargo/bin:$PATH" \
+	CC="clang" \
+	CXX="clang++" \
+	GN_EXE=gn
+
+RUN apk add --update --no-cache musl-dev && \
+	sed -i -e "s/v[[:digit:]]\..*\//edge\//g" /etc/apk/repositories && \
+	apk add --update --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+	rustup \
+	bash \
+	python3 \
+	python2 \
+	git \
+	build-base \
+	wget \
+	clang \
+	llvm \
+	gn \
+	tar \
+	ninja
+
+RUN rustup-init -y && \
+	wget https://musl.css/aarch64-linux-musl-cross.tgz && \
+	tar -xvf aarch64 aarch64-linux-musl-cross.tgz && \
+	rm aarch64-linux-musl-cross.tgz

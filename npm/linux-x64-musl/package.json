@@ -1,0 +1,19 @@
+{
+	"name": "@tomiocodes/uuid-linux-x64-musl",
+	"version": "1.0.0",
+	"os": [
+		"linux"
+	],
+	"cpu": [
+		"x64"
+	],
+	"main": "uuid.linux-x64-musl.node",
+	"files": [
+		"uuid.linux-x64-musl.node"
+	],
+	"license": "Apache-2.0",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": "https://github.com/1chiSensei/uuid"
+}

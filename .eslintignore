@@ -1,0 +1,4 @@
+dist/
+.yarn/
+benchmark/
+tests/
