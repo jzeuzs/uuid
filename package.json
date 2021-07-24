@@ -16,7 +16,7 @@
 		"prettier": "prettier . --write",
 		"build": "run-p ts:build rs:build",
 		"rs:build": "napi build --platform --release",
-		"version": "napi version",
+		"ver": "napi version",
 		"artifacts": "napi artifacts",
 		"docs": "typedoc",
 		"fmt": "cargo fmt",
@@ -117,7 +117,6 @@
 		]
 	},
 	"lint-staged": {
-		"*.@(js|ts|mjs|yml|md|json)": "prettier . --write",
-		"*.rs": "yarn fmt"
+		"*.@(js|ts|mjs|yml|md|json)": "prettier . --write"
 	}
 }
