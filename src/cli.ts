@@ -6,7 +6,7 @@ import prog from 'caporal';
 
 const logger = consola.create({ level: 5 });
 
-prog.version('1.0.2')
+prog.version('1.0.1')
 	.name('@tomiocodes/uuid')
 	.logger(logger)
 	.command('v1', 'Generates a timestamp UUID.')

@@ -1,6 +1,6 @@
 {
 	"name": "@tomiocodes/uuid",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A simple utility to generate Universally Unique Identifiers.",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
@@ -21,7 +21,8 @@
 		"docs": "typedoc",
 		"fmt": "cargo fmt",
 		"format": "run-p prettier fmt",
-		"prepare": "node scripts/prepare.mjs"
+		"prepare": "node scripts/prepare.mjs",
+		"prepublishOnly": "napi prepublish -t npm"
 	},
 	"bin": {
 		"uuid-cli": "./dist/cli.js"

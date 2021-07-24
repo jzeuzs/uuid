@@ -61,7 +61,7 @@ console.log(v4());
 
 ```sh
 
-   @tomiocodes/uuid 1.0.0
+   @tomiocodes/uuid 1.0.1
 
    USAGE
 
