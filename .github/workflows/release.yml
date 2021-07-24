@@ -2,7 +2,7 @@ name: Release
 
 env:
   DEBUG: 'napi:*'
-  APP_NAME: 'skia'
+  APP_NAME: 'uuid'
   MACOSX_DEPLOYMENT_TARGET: '10.13'
 
 on:
