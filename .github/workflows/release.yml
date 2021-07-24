@@ -196,6 +196,9 @@ jobs:
           name: bindings-${{ matrix.settings.target }}
           path: .
 
+      - name: Build TypeScript
+        run: yarn ts:build
+
       - name: Test bindings
         run: yarn test
 
@@ -241,6 +244,9 @@ jobs:
         with:
           name: bindings-x86_64-unknown-linux-gnu
           path: .
+
+      - name: Build TypeScript
+        run: yarn ts:build
 
       - name: List packages
         run: ls -R .
@@ -292,6 +298,9 @@ jobs:
           name: bindings-x86_64-unknown-linux-musl
           path: .
 
+      - name: Build TypeScript
+        run: yarn ts:build
+
       - name: List packages
         run: ls -R .
         shell: bash
@@ -340,7 +349,9 @@ jobs:
               apt-get install -y ca-certificates gnupg2 curl apt-transport-https && \
               curl -sL https://deb.nodesource.com/setup_${{ matrix.node }}.x | bash - && \
               apt-get install -y nodejs && \
+              npm i -g yarn && \
               yarn && \
+              yarn ts:build && \
               yarn test && \
               ls -la
             "
@@ -378,8 +389,9 @@ jobs:
         with:
           args: >
             sh -c "
-              apk add nodejs npm && \
+              apk add nodejs npm yarn && \
               yarn && \
+              yarn ts:build && \
               yarn test
             "
       - name: Test failed
@@ -423,7 +435,9 @@ jobs:
               apt-get install -y ca-certificates gnupg2 curl apt-transport-https && \
               curl -sL https://deb.nodesource.com/setup_${{ matrix.node }}.x | bash - && \
               apt-get install -y nodejs && \
+              npm i -g yarn && \
               yarn && \
+              yarn ts:build && \
               yarn test && \
               ls -la
             "
@@ -479,17 +493,8 @@ jobs:
 
       - name: Publish
         run: |
-          if git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+\.[0-9]\+$";
-          then
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            yarn publish
-          elif git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+\.[0-9]\+";
-          then
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-            yarn publish
-          else
-            echo "Not a release, skipping publish"
-          fi
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+          yarn publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
