@@ -253,7 +253,7 @@ jobs:
         shell: bash
 
       - name: Test bindings
-        run: docker run --rm -v $(pwd):/${{ env.APP_NAME }} -w /${{ env.APP_NAME }} node:${{ matrix.node }}-alpine yarn test
+        run: docker run --rm -v $(pwd):/${{ env.APP_NAME }} -w /${{ env.APP_NAME }} node:${{ matrix.node }}-alpine apk add --no-cache libc6-compat && yarn test
 
       - name: Test failed
         if: ${{ failure() }}
