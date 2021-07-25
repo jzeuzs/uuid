@@ -60,7 +60,7 @@ console.log(v4());
 ### CLI Usage
 
 ```sh
-   @tomiocodes/uuid 1.1.1
+   @tomiocodes/uuid 1.1.2
 
    USAGE
 
