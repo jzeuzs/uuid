@@ -6,6 +6,7 @@ extern crate napi_derive;
 use blob_uuid::to_blob;
 use napi::{CallContext, Env, JsNumber, JsObject, JsString, Result};
 use rs_uuid::iso::uuid_v4;
+use rs_uuid::{uuid16, uuid32, uuid8};
 use std::convert::TryInto;
 use uuid::v1::{Context, Timestamp};
 use uuid::Uuid;
@@ -94,6 +95,17 @@ fn parse(ctx: CallContext) -> Result<JsObject> {
     let uuid = ctx.get::<JsString>(0)?.into_utf8()?;
     let parsed = Uuid::parse_str(uuid.as_str()?).expect("Invalid UUID.");
     let mut obj = ctx.env.create_object()?;
+    let timestamp = parsed.to_timestamp();
+
+    if timestamp == None {
+        obj.set_named_property("timestamp", ctx.env.get_null()?)?;
+    } else {
+        obj.set_named_property(
+            "timestamp",
+            ctx.env
+                .create_int64(timestamp.unwrap().to_unix().0.try_into().unwrap())?,
+        )?;
+    }
 
     obj.set_named_property("isNil", ctx.env.get_boolean(Uuid::is_nil(&parsed))?)?;
     obj.set_named_property(
@@ -114,6 +126,27 @@ fn blob(ctx: CallContext) -> Result<JsString> {
     ctx.env.create_string(converted.to_string().as_str())
 }
 
+#[js_function(0)]
+fn gen_8b(ctx: CallContext) -> Result<JsString> {
+    let uuid = uuid8();
+
+    ctx.env.create_string(uuid.as_str())
+}
+
+#[js_function(0)]
+fn gen_16b(ctx: CallContext) -> Result<JsString> {
+    let uuid = uuid16();
+
+    ctx.env.create_string(uuid.as_str())
+}
+
+#[js_function(0)]
+fn gen_32b(ctx: CallContext) -> Result<JsString> {
+    let uuid = uuid32();
+
+    ctx.env.create_string(uuid.as_str())
+}
+
 #[module_exports]
 fn init(mut exports: JsObject, env: Env) -> Result<()> {
     exports.create_named_method("v4", v4)?;
@@ -122,6 +155,9 @@ fn init(mut exports: JsObject, env: Env) -> Result<()> {
     exports.create_named_method("v5", v5)?;
     exports.create_named_method("parse", parse)?;
     exports.create_named_method("blob", blob)?;
+    exports.create_named_method("gen8b", gen_8b)?;
+    exports.create_named_method("gen16b", gen_16b)?;
+    exports.create_named_method("gen32b", gen_32b)?;
     exports.set_named_property("NIL", env.create_string(Uuid::nil().to_string().as_str())?)?;
 
     Ok(())

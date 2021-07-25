@@ -2,3 +2,4 @@ dist/
 .yarn/
 benchmark/
 tests/
+docs/

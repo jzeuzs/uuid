@@ -60,8 +60,7 @@ console.log(v4());
 ### CLI Usage
 
 ```sh
-
-   @tomiocodes/uuid 1.0.1
+   @tomiocodes/uuid 1.1.0
 
    USAGE
 
@@ -97,13 +96,13 @@ echo "source <(uuid-cli completion bash)" >> ~/.bashrc && source ~/.bashrc
 
 > Zsh
 
-```zsh
+```sh
 echo "source <(uuid-cli completion zsh)" >> ~/.zshrc && source ~/.zshrc
 ```
 
 > Fish
 
-```fish
+```sh
 echo "source <(uuid-cli completion fish)" >> ~/.config/fish/config.fish && source ~/.config/fish/config.fish
 ```
 

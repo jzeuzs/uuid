@@ -14,12 +14,14 @@ export const enum Namespace {
 /**
  * The UUID Regex.
  * @type {RegExp}
+ * @raw `/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i`
  */
 export const uuidRegex = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
 
 /**
  * The NIL uuid.
  * @type {string}
+ * @raw `00000000-0000-0000-0000-000000000000`
  */
 export const NIL = native.NIL as string;
 
@@ -33,11 +35,7 @@ export const NIL = native.NIL as string;
  * console.log(v1());
  * ```
  */
-export const v1 = (date: Date = new Date()): string => {
-	const unix = Number((date.getTime() / 1000).toFixed(0));
-
-	return native.v1(unix);
-};
+export const v1 = (date: Date = new Date()): string => native.v1(date.getTime());
 
 /**
  * Generates a MD5 UUID.
@@ -105,12 +103,35 @@ export const blob = (uuid: string): string => {
 	return native.blob(uuid);
 };
 
+/**
+ * Generates either a 8, 16, 32 byte UUID.
+ * @param {8|16|32} type The type.
+ * @returns {string} The uuid.
+ */
+export const generate = (type: 8 | 16 | 32): string => {
+	switch (type) {
+		case 8:
+			return native.gen8b();
+		case 16:
+			return native.gen16b();
+		case 32:
+			return native.gen32b();
+		default:
+			throw new TypeError('Invalid type.');
+	}
+};
+
+export type Nullable<T> = T | null;
+
 export interface ParseResponse {
 	/** If the uuid is NIL. */
 	isNil: boolean;
 
 	/** The version of the uuid. */
 	version: string;
+
+	/** The timestamp of the uuid. */
+	timestamp: Nullable<number>;
 }
 
 export default {
@@ -122,5 +143,6 @@ export default {
 	v5,
 	parse,
 	validate,
-	blob
+	blob,
+	generate
 };

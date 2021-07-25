@@ -6,7 +6,7 @@ import prog from 'caporal';
 
 const logger = consola.create({ level: 5 });
 
-prog.version('1.0.1')
+prog.version('1.1.0')
 	.name('@tomiocodes/uuid')
 	.logger(logger)
 	.command('v1', 'Generates a timestamp UUID.')
@@ -42,6 +42,10 @@ prog.version('1.0.1')
 	})
 	.command('blob', 'Converts a UUID to a 22 character URL-friendly blob.')
 	.argument('<uuid>', 'The UUID.', prog.STRING)
-	.action(({ uuid }, _, l) => l.log(blob(uuid)));
+	.action(({ uuid }, _, l) => l.log(blob(uuid)))
+	.command('generate', 'Generates either a 8, 16, 32 byte UUID.')
+	.alias('gen')
+	.argument('<type>', 'The type.', prog.INT)
+	.action(({ type }, _, l) => l.log(uuid.generate(type)));
 
 prog.parse(process.argv);

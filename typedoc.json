@@ -1,5 +1,7 @@
 {
 	"out": "./docs/",
+	"theme": "./node_modules/@jjwesterkamp/typedoc-theme",
+	"highlightTheme": "nord",
 	"readme": "./README.md",
 	"name": "@tomiocodes/prompt",
 	"entryPoints": ["src/index.ts"],

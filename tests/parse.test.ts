@@ -4,13 +4,13 @@ describe('parse', () => {
 	it('should parse a uuid', () => {
 		const parsed = parse('67dd7b4a-6634-48ed-bc60-c4c3b9f62f29');
 
-		expect(parsed).toEqual({ isNil: false, version: '4' });
+		expect(parsed).toEqual({ isNil: false, version: '4', timestamp: null });
 	});
 
 	it('should parse a nil uuid', () => {
 		const parsed = parse('00000000-0000-0000-0000-000000000000');
 
-		expect(parsed).toEqual({ isNil: true, version: '0' });
+		expect(parsed).toEqual({ isNil: true, version: '0', timestamp: null });
 	});
 
 	it('should throw an error', () => {
