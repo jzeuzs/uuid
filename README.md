@@ -47,7 +47,7 @@ npm i -g @tomiocodes/uuid
 
 ## Usage
 
-**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { prompt } = require('@tomiocodes/uuid')` equals `import { prompt } from '@tomiocodes/uuid'`.
+**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { v4 } = require('@tomiocodes/uuid')` equals `import { v4 } from '@tomiocodes/uuid'`.
 
 ### Basic Usage
 
@@ -60,7 +60,7 @@ console.log(v4());
 ### CLI Usage
 
 ```sh
-   @tomiocodes/uuid 1.1.0
+   @tomiocodes/uuid 1.1.1
 
    USAGE
 
