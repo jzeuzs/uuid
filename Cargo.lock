@@ -126,9 +126,9 @@ dependencies = [
 
 [[package]]
 name = "napi"
-version = "1.7.5"
+version = "1.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "59cd02f5de365f9bd6e85f1d11176a9ea70ff63ce55ea4412cb4e00fd5a0fe6c"
+checksum = "eb22375ec7cbd8bee4535126bb323e4e62cbf8088d84f0225d4d3226d1619bd5"
 dependencies = [
  "napi-sys",
  "winapi",
