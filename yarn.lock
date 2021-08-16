@@ -823,16 +823,17 @@
   dependencies:
     "@swc-node/core" "^1.5.1"
 
-"@swc-node/register@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@swc-node/register/-/register-1.3.2.tgz#8452284f7dc5facc3bae22930a6ee890c89824c7"
-  integrity sha512-Ksol6zPZl0wFvJMUQx/RTnRNq4XZR3/mwa3N9Lg75U5/lubUMtatTa2dQOzoB8K8TcxwXPtpaA5E7v26HNy5PQ==
+"@swc-node/register@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@swc-node/register/-/register-1.3.4.tgz#b3b5b26341188b40177bbfd247c4fb622c9c6fde"
+  integrity sha512-clv43MpAfjtVWzSVyEF4uR+r3yA1HQg7y4mwonC/nHteFSr8hlYr36hKr7lJZehTCTFNwdqai9Ly+Qa6nB8cWg==
   dependencies:
     "@swc-node/core" "^1.5.1"
     "@swc-node/sourcemap-support" "^0.1.8"
-    chalk "^4.1.1"
-    debug "^4.3.1"
+    chalk "^4.1.2"
+    debug "^4.3.2"
     pirates "^4.0.1"
+    typescript "^4.3.5"
 
 "@swc-node/sourcemap-support@^0.1.8":
   version "0.1.8"
@@ -1544,10 +1545,10 @@ chalk@^2.0.0, chalk@^2.4.1:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.1.tgz#c80b3fab28bf6371e6863325eee67e618b77e6ad"
-  integrity sha512-diHzdDKxcU+bAsUboHLPEDQiw0qEe0qd7SYUn3HgcFlWgbDcfLGswOHYeGrHKzG9z6UYf01d9VFMfZxPM1xZSg==
+chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
+  integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
@@ -1833,7 +1834,7 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1:
+debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
   integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
