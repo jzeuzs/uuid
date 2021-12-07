@@ -82,7 +82,7 @@
 		"@types/prettier": "^2",
 		"@types/uuid": "^8",
 		"benny": "^3.6.15",
-		"eslint": "^7.31.0",
+		"eslint": "^8.4.1",
 		"husky": "^7.0.0",
 		"jest": "^27.0.6",
 		"lint-staged": "^11.1.1",
