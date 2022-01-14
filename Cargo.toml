@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 path = "lib/lib.rs"
 
 [dependencies]
-napi = "1"
+napi = "2"
 napi-derive = "1"
 uuid = { version = "0.8", features = ["serde", "v3", "v5", "v1"] }
 rs-uuid = "0.3.1"
