@@ -11,7 +11,7 @@ path = "lib/lib.rs"
 
 [dependencies]
 napi = "1"
-napi-derive = "1"
+napi-derive = "2"
 uuid = { version = "0.8", features = ["serde", "v3", "v5", "v1"] }
 rs-uuid = "0.3.1"
 blob-uuid = "0.4.0"
